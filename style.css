@@ -1,0 +1,201 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+  place-items: center;
+  display: grid;
+}
+
+.box {
+  width: 30%;
+  height: auto;
+  background-color: #fff;
+  /* box-shadow: 18px 20px 20px 0px rgb(56 182 234 / 6%); */
+  border: 1px solid rgb(0,0,0,.1);
+  padding: 25px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition-duration: 300ms;
+}
+
+.box::before{
+    position: absolute;
+    content: '';
+    width: 108px;
+    height: 203px;
+    background-color: rgba(0, 171, 194, 0.075);
+    transform: rotate(146deg);
+    left: 0;
+    top: -20px;
+    border-radius: 100px;
+}
+.box.dark{
+  background-color: rgba(0, 0, 0, 0.74);
+  color: #fff;
+  transition-duration: 300ms;
+}
+
+.title_div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.title_div h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0.6;
+  text-transform: capitalize;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+.title_div #assistant{
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 99;
+}
+
+.box.dark #assistant{
+  border: 1px solid rgba(255, 255, 255, 0.938);
+}
+input[type = "checkbox"]{
+  appearance: none;
+  width: 50px;
+  height: 30px;
+  border: 2px double rgb(0,0,0,.1);
+  border-radius: 60px;
+  position: relative;
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+input[type = "checkbox"]::before{
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  left: 0px;
+  width: 26px;height: 26px;
+  background-color: rgb(0,0,0,.1);
+  transition-duration: 300ms;
+}
+input[type = "checkbox"]:checked{
+  background-color: rgba(0, 171, 194, 0.075);
+}
+input[type = "checkbox"]:checked::before{
+  left: 20px;
+}
+
+
+.box.dark input[type = "checkbox"]:checked::before{
+  background-color: rgba(255, 255, 255, 0.733);
+}
+
+.box hr {
+  margin: 15px 0;
+  opacity: .5;
+}
+.box .messages_area {
+  width: 100%;
+  height: 450px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.box .messages_area::-webkit-scrollbar {
+  width: 0;
+}
+
+.chats {
+  width: 100%;
+  /* background-color: red; */
+  position: relative;
+}
+
+
+
+.left{
+    float: left;
+    clear: both;
+    background-color: rgb(232, 252, 255);
+}
+.right{
+    float: right;
+    clear: both;
+    background-color: rgba(85, 241, 124, 0.205);
+}
+
+
+
+.message{
+    max-width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: justify;
+    border-radius: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    opacity: .8;
+    text-transform: capitalize;
+    position: relative;
+}
+
+#mic{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;border-radius: 50%;
+    opacity: .5;
+    color: #000;
+    cursor: pointer;
+    transition-duration: 200ms;
+    animation: anm 2s linear infinite alternate-reverse;
+    z-index: 99;
+}
+
+.box.dark #mic{
+  background-color: #fff;
+}
+
+@keyframes anm {
+    20% {
+        box-shadow: 0px 0px 0px 10px rgba(85, 241, 124, 0.788);
+    }
+}
+
+
+#mic:hover{
+    opacity: .6;
+}
+
+#notchat{
+  position: absolute;
+  top: 50%;left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: .6;
+}
+
+
+
+
+@media (max-width:768px) {
+    .box{
+        width: 90%;
+    }
+
+    .title_div h2{
+        font-size: .9rem;
+    }
+    .box .messages_area {
+        height: 380px;
+      }
+}
